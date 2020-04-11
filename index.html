@@ -98,10 +98,7 @@ Known Issues: None
 			coldCalc();
 		//allergies calculation runs on results page
 			allergiesCalc();
-		//defines resultText as variable
-			var resultText = document.getElementById("results");
-		//shows what will be displayed on results page
-			resultText.innerHTML = " allergiesPercent + coldPercent + fluPercent + coronaPercent "; 
+	
 		}
 			
 	//resets count when quiz is restarted
@@ -115,7 +112,36 @@ Known Issues: None
 			coldPercent=0;
 			allergiesPercent=0;
 		}
+	
+	function corona(){ //this function draws percentage of having corona
+		var a = document.getElementById("myCanvas"); //calls the canvas
+		var atx = a.getContext("2d"); // prints in 2d
+		atx.fillText("The probability you have corona virus is" + coronaPercent,100,100); //detrmines where and what is written
+	`	}
+	
+	function flu(){ //this function draws percentage of having flu
+		var b = document.getElementById("myCanvas"); //calls the canvas
+		var btx = b.getContext("2d"); // prints in 2d
+		btx.fillText("The probability you have the flu is" + fluPercent,100,100); //detrmines where and what is written
+		}
 		
+	function cold(){ //this function draws percentage of having cold
+		var c = document.getElementById("myCanvas"); //calls the canvas
+		var ctx = c.getContext("2d"); // prints in 2d
+		ctx.fillText("The probability you have a cold is" + coldPercent,100,100); //detrmines where and what is written
+		}
+		
+	function allergies(){ //this function draws percentage of having cold
+		var d = document.getElementById("myCanvas"); //calls the canvas
+		var dtx = d.getContext("2d"); // prints in 2d
+		dtx.fillText("The probability you have allergies is" + allergiesPercent,100,100); //detrmines where and what is written
+		}
+
+	function clearCanvas(){ //this function clears the canvas
+		var d = document.getElementById("myCanvas"); //calls the canvas
+		var dtx = d.getContext("2d"); //prints in 2d
+		dtx.clearRect(0,0,350,300); //clears everything within the rectangle with specified coordinates
+}
 
 //end of script
   	</script>
@@ -410,7 +436,12 @@ Known Issues: None
 	<p id="results" ></p>
 	<canvas id="myCanvas" width="350" height="300" style="border:1px solid #000000;">
 		</canvas> <!--creates the canvas with a black border-->
-	<a href="#one" onclick="reset();" class="w3-btn w3-black w3-ripple">Take Again!</a>
+	<p><a onclick="corona();" class="w3-btn w3-blue w3-ripple">Do I have coronavirus?</a></p>  <!--button that draws rectangle-->
+	<p><a onclick="flu();" class="w3-btn w3-blue w3-ripple">Do I have the flu?</a></p>  <!--button that writes name-->
+	<p><a onclick="cold();" class="w3-btn w3-blue w3-ripple">Do I have a cold?</a></p>  <!--buttons that pulls up image-->
+	<p><a onclick="allergies();" class="w3-btn w3-blue w3-ripple">Do I have allergies?</a></p>  <!--buttons that pulls up image-->
+	<p><a onclick="clearCanvas();" class="w3-btn w3-blue w3-ripple">Clear Canvas</a></p>  <!--button that clears canvas-->
+	<p><a href="#one" onclick="reset();" class="w3-btn w3-black w3-ripple">Take Again!</a>
 	</div> 
 </div>
 	   
