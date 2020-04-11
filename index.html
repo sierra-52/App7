@@ -10,11 +10,13 @@ Sierra Yoshida
  
 Further Information:
 http://diystream.cns.utexas.edu/
+
 Research Educator:
 Timothy Riedel
 triedel@utexas.edu
  
-Brief Description of Goal of Code: Create an app that uses CSS, HTML, and Javascript to give the probability that one is experiencing PMS or pregnancy.
+Brief Description of Goal of Code: Create an app that visualizes the results of a symptom chart for coronavirus.
+
 Known Issues: None
 -->
 
@@ -38,49 +40,80 @@ Known Issues: None
 	// If you find the alert box annoying, comment out that line and timestamp will still show up in the debugging console
 
 //functions 	
-	//defining the variables for pregnancy, pms, pregnancy percent, and pms percent
-        	var pregnancy_count = 0;
-        	var pms_count = 0;
+	//defining the variables for coronavirus, cold, flu, and allergies percent
+        	var corona_count = 0;
+        	var cold_count = 0;
+	        var flu_count = 0;
+        	var allergies_count = 0;
+
 	
 
-	//adds a count to pregnancy variable when user clicks corresponding answer
-       		function pregnancyAdd(){
-           		pregnancy_count = pregnancy_count + 1;
+	//adds a count to corona variable when user clicks corresponding answer
+       		function coronaAdd(){
+           		corona_count = corona_count + 1;
 		}	
 	
-	//adds a count to pms variable when user clicks corresponding answer
-        	function pmsAdd(){
-			pms_count = pms_count + 1;
+	//adds a count to cold variable when user clicks corresponding answer
+        	function coldAdd(){
+			cold_count = cold_count + 1;
 		}
 	
-	//calculates % chance symptoms are caused by pregnancy
-		function pregnancyCalc(){
-			pregnancyPercent= (pregnancy_count/4)*100;
+	//adds a count to flu variable when user clicks corresponding answer
+        	function fluAdd(){
+			flu_count = flu_count + 1;
+		}
+	
+	//adds a count to allergies variable when user clicks corresponding answer
+        	function allergiesAdd(){
+			allergies_count = allergies_count + 1;
+		}
+	
+	//calculates % chance symptoms are caused by corona
+		function coronaCalc(){
+			coronaPercent= (corona_count/11)*100;
 		}
 		
-	//calculates % chance symptoms are caused by pms
-		function pmsCalc(){
-			pmsPercent= (pms_count/4)*100;
+	//calculates % chance symptoms are caused by cold
+		function coldCalc(){
+			coldPercent= (cold_count/11)*100;
+		}
+
+	//calculates % chance symptoms are caused by flu
+		function fluCalc(){
+			fluPercent= (flu_count/11)*100;
+		}
+	
+	//calculates % chance symptoms are caused by allergies
+		function allergiesCalc(){
+			allergiesPercent= (allergies_count/11)*100;
 		}
 
 	//made function for results
 		function Results(){
-		//pregnancy calculation runs on results page
-			pregnancyCalc();
-		//pms calculation runs on results page
-			pmsCalc();
+		//corona calculation runs on results page
+			coronaCalc();
+		//flu calculation runs on results page
+			fluCalc();
+		//cold calculation runs on results page
+			coldCalc();
+		//allergies calculation runs on results page
+			allergiesCalc();
 		//defines resultText as variable
 			var resultText = document.getElementById("results");
 		//shows what will be displayed on results page
-			resultText.innerHTML = "Probability it is pregnancy = " + pregnancyPercent + "% <br> Probability it is PMS = " + pmsPercent + "%"; 
+			resultText.innerHTML = " allergiesPercent + coldPercent + fluPercent + coronaPercent "; 
 		}
 			
 	//resets count when quiz is restarted
 		function reset(){
-			pregnancy_count=0;
-			pms_count=0;
-			pregnancyPercent=0;
-			pmsPercent=0;
+			corona_count=0;
+			flu_count=0;
+			cold_count=0;
+			allergies_count=0;
+			coronaPercent=0;
+			fluPercent=0;
+			coldPercent=0;
+			allergiesPercent=0;
 		}
 		
 
@@ -126,7 +159,7 @@ Known Issues: None
 	<!--content of start page-->	
 		<div id="content" class="w3-container">
 	<!--first sentence-->
-		<p><b>Are you feeling like you might be pregnant but not sure if you are just experiencing PMS? Answer a few short questions to find out!</b></p>
+		<p><b>Are you feeling like you might have coronavirus? Answer a few short questions to find out!</b></p>
 	<!--Get Started button takes you to page one-->	
 		<a href="#one" class="w3-btn w3-blue w3-round"> Get Started </a>
 	<!--displayed body of text-->
@@ -145,12 +178,16 @@ Known Issues: None
 	
 	<!--content of page one-->	
 	<div id="content" class="w3-container">
-	<!--question one on page one-->	   	
-	<p>Are you experiencing symptoms of nausea or vomiting?</p> 
-	<!--when yes button is clicked, pregnancy count increases by one and proceeds to page two-->	   	
-	<a href="#two"  onclick="pregnancyAdd();" class="w3-btn w3-green w3-ripple"> Yes </a>
-	<!--when no button is clicked, pms count increases by one and proceeds to page two-->	
-	<a href="#two"  onclick="pmsAdd();" class="w3-btn w3-red w3-ripple"> No </a>
+	<!--question one-->	   	
+	<p>How long have you been experiencing symptoms?</p> 
+	<!--when button is clicked, corona count increases by one and proceeds to page two-->	   	
+	<a href="#two"  onclick="coronaAdd();" class="w3-btn w3-green w3-ripple"> 7-25 days </a>
+	<!--when button is clicked, flu count increases by one and proceeds to page two-->	
+	<a href="#two"  onclick="fluAdd();" class="w3-btn w3-red w3-ripple"> Less than 14 days </a>
+	<!--when button is clicked, cold count increases by one and proceeds to page two-->	   	
+	<a href="#two"  onclick="coldAdd();" class="w3-btn w3-green w3-ripple"> 7-14 days </a>
+	<!--when no button is clicked, allergies count increases by one and proceeds to page two-->	
+	<a href="#two"  onclick="allergiesAdd();" class="w3-btn w3-red w3-ripple"> Several Weeks </a>
 	<!--closed out this section-->
 	</div> 
 </div>
@@ -162,16 +199,16 @@ Known Issues: None
 	<h1>Question 2</h1>
 	</div>
 	
-	<!--content of page two-->		
+	<!--content of page two-->	
 	<div id="content" class="w3-container">
-	<!--question two on page two-->	   	
-	<p>Are you breaking out in acne?</p>	
-	<img src="https://c7.uihere.com/files/202/959/589/cartoon-facial-acne.jpg" alt="acne" align="center" style="width:200px;height:190px;"> <!-- this adds the acne image-->
-	<br> <!--line break-->
-	<!--when yes button is clicked, pms count increases by one and proceeds to page three-->	   		
-	<a href="#three"  onclick="pmsAdd();" class="w3-btn w3-green w3-ripple"> Yes </a>
-	<!--when no button is clicked, pregnancy count increases by one and proceeds to page three-->	   	
-	<a href="#three"  onclick="pregnancyAdd();" class="w3-btn w3-red w3-ripple"> No </a>
+	<!--question two-->	   	
+	<p>How are your coughs?</p> 
+	<!--when button is clicked, flu count increases by one and proceeds to page three-->	
+	<a href="#three"  onclick="fluAdd();" class="w3-btn w3-red w3-ripple"> Mild </a>
+	<!--when button is clicked, cold and corona count increases by one and proceeds to page three-->	   	
+	<a href="#three"  onclick="coldAdd();coronaAdd();" class="w3-btn w3-green w3-ripple"> Dry </a>
+	<!--when no button is clicked, allergies count increases by one and proceeds to page three-->	
+	<a href="#three"  onclick="allergiesAdd();" class="w3-btn w3-red w3-ripple"> No cough (or asthma like) </a>
 	<!--closed out this section-->
 	</div> 
 </div>
@@ -180,17 +217,17 @@ Known Issues: None
 <div class="page" id="three">
 	<div class="w3-container w3-flat-carrot">
 	<!--Header of page three-->
-	<h1>Question 3</h1>
+	<h1>Are you experiencing shortness of breath?</h1>
 	</div>
 	
-	<!--content of page three-->			
+	<!--content of page three-->	
 	<div id="content" class="w3-container">
-	<!--question three on page three-->	   	
-	<p>Do you have a sudden increase in appetite?</p>
-	<!--when yes button is clicked, pms count increases by one and proceeds to page four-->	   			
-	<a href="#four"  onclick="pmsAdd();" class="w3-btn w3-green w3-ripple"> Yes </a>
-	<!--when no button is clicked, pregnancy count increases by one and proceeds to page four-->	   			
-	<a href="#four"  onclick="pregnancyAdd();" class="w3-btn w3-red w3-ripple"> No </a>
+	<!--question three-->	   	
+	<p>How are your coughs?</p> 
+	<!--when button is clicked, corona count increases by one and proceeds to page four-->	   	
+	<a href="#four"  onclick="coronaAdd();" class="w3-btn w3-green w3-ripple"> Yes </a>
+	<!--when button is clicked, flu, cold, and allergies count increases by one and proceeds to page four-->	
+	<a href="#four"  onclick="fluAdd();coldAdd();allergiesAdd();" class="w3-btn w3-red w3-ripple"> No </a>
 	<!--closed out this section-->
 	</div> 
 </div>		
@@ -203,37 +240,168 @@ Known Issues: None
 	<h1>Question 4</h1>
 	</div>
 	
-	<!--content of page four-->			
+	<!--content of page four-->	
 	<div id="content" class="w3-container">
-	<!--question four on page four-->	   
-	<p>Are you experiencing a shortness of breath?</p>
-	<!--when yes button is clicked, pregnancy count increases by one and proceeds to page five-->	   				
-	<a href="#five"  onclick="pregnancyAdd(); Results();" class="w3-btn w3-green w3-ripple"> Yes </a>
-	<!--when no button is clicked, pms count increases by one and proceeds to page five-->	   				
-	<a href="#five"  onclick="pmsAdd(); Results();" class="w3-btn w3-red w3-ripple"> No </a>
+	<!--question four-->	   	
+	<p>Are you sneezing?</p> 
+	<!--when button is clicked, cold and allergies count increases by one and proceeds to page five-->	   	
+	<a href="#five"  onclick="coldAdd();allergiesAdd();" class="w3-btn w3-green w3-ripple"> Yes </a>
+	<!--when button is clicked, flu and corona count increases by one and proceeds to page five-->	
+	<a href="#five"  onclick="fluAdd();coronaAdd();" class="w3-btn w3-red w3-ripple"> No </a>
 	<!--closed out this section-->
 	</div> 
 </div>
 		
-<!--page five, last before results-->					
+<!--page five containing the fifth question-->				
 <div class="page" id="five">
 	<div class="w3-container w3-flat-carrot">
-	<!--header on page five for results-->				
-	<h1>Ready to find out if you are experiencing PMS or pregnancy?</h1>
+	<!--Header of page five-->
+	<h1>Question 5</h1>
 	</div>
 	
+	<!--content of page five-->	
 	<div id="content" class="w3-container">
-	<!--button takes you to page six, with calculated results-->				
-	<a href="#six" onclick="Results();" class="w3-btn w3-black w3-ripple">Your results!</a>
+	<!--question five-->	   	
+	<p>Are you experiencing a runny or stuffy nose?</p> 
+	<!--when button is clicked, cold and allergies count increases by one and proceeds to page six-->	
+	<a href="#six"  onclick="coldAdd();allergiesAdd();" class="w3-btn w3-red w3-ripple"> Yes </a>
+	<!--when button is clicked, corona count increases by one and proceeds to page six-->	   	
+	<a href="#six"  onclick="coronaAdd();" class="w3-btn w3-green w3-ripple"> No </a>
+	<!--when button is clicked, flu count increases by one and proceeds to page six-->	   	
+	<a href="#six"  onclick="fluAdd();" class="w3-btn w3-green w3-ripple"> Sometimes </a>
 	<!--closed out this section-->
 	</div> 
 </div>
 	
-	
-<!--page six containing final results-->			
+<!--page six containing the sixth question-->				
 <div class="page" id="six">
 	<div class="w3-container w3-flat-carrot">
-	<!--header for page six-->				
+	<!--Header of page six-->
+	<h1>Question 6</h1>
+	</div>
+	
+	<!--content of page six-->	
+	<div id="content" class="w3-container">
+	<!--question six-->	   	
+	<p>Do you have a sore throat?</p> 
+	<!--when button is clicked, cold count increases by one and proceeds to page seven-->	
+	<a href="#seven"  onclick="coldAdd();" class="w3-btn w3-red w3-ripple"> Yes </a>
+	<!--when button is clicked, corona and flu count increases by one and proceeds to page seven-->	   	
+	<a href="#seven"  onclick="coronaAdd();fluAdd();" class="w3-btn w3-green w3-ripple"> Sometimes </a>
+	<!--when button is clicked, allergies count increases by one and proceeds to page seven-->	   	
+	<a href="#seven"  onclick="allergiesAdd();" class="w3-btn w3-green w3-ripple"> Sometimes (mild)</a>
+	<!--closed out this section-->
+	</div> 
+</div>
+			
+<!--page seven containing the seventh question-->				
+<div class="page" id="seven">
+	<div class="w3-container w3-flat-carrot">
+	<!--Header of page seven-->
+	<h1>Question 7</h1>
+	</div>
+	
+	<!--content of page seven-->	
+	<div id="content" class="w3-container">
+	<!--question seven-->	   	
+	<p>Do you have a Fever?</p> 
+	<!--when button is clicked, corona and flu count increases by one and proceeds to page eight-->	
+	<a href="#eight"  onclick="coronaAdd();fluAdd();" class="w3-btn w3-red w3-ripple"> Yes </a>
+	<!--when button is clicked, cold count increases by one and proceeds to page eight-->	   	
+	<a href="#eight"  onclick="coldAdd();" class="w3-btn w3-green w3-ripple"> Yes, but for short period of time </a>
+	<!--when button is clicked, allergies count increases by one and proceeds to page seven-->	   	
+	<a href="#eight"  onclick="allergiesAdd();" class="w3-btn w3-green w3-ripple"> Sometimes (mild)</a>
+	<!--closed out this section-->
+	</div> 
+</div>
+	
+<!--page eight containing the eighth question-->				
+<div class="page" id="eight">
+	<div class="w3-container w3-flat-carrot">
+	<!--Header of page eight-->
+	<h1>Question 8</h1>
+	</div>
+	
+	<!--content of page eight-->	
+	<div id="content" class="w3-container">
+	<!--question eight-->	   	
+	<p>Do you feel tired and weak?</p> 
+	<!--when button is clicked, flu count increases by one and proceeds to page nine-->	
+	<a href="#nine"  onclick="fluAdd();" class="w3-btn w3-red w3-ripple"> Yes </a>
+	<!--when button is clicked, cold, corona, and allergies count increases by one and proceeds to page eight-->	   	
+	<a href="#nine"  onclick="coldAdd();coronaAdd();allergiesAdd();" class="w3-btn w3-green w3-ripple"> Sometimes </a>
+	</div> 
+</div>
+
+<!--page nine containing the nineth question-->	
+<div class="page" id="nine"> 
+	<!--Header of page nine-->
+	<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Question 9</h1>
+	</div>
+	
+	<!--content of page one-->	
+	<div id="content" class="w3-container">
+	<!--question nine-->	   	
+	<p>Do you experience headaches?</p> 
+	<!--when button is clicked, flu count increases by one and proceeds to page ten-->	
+	<a href="#ten"  onclick="fluAdd();" class="w3-btn w3-red w3-ripple"> Yes </a>
+	<!--when button is clicked, corona count increases by one and proceeds to page ten-->	   	
+	<a href="#ten"  onclick="coronaAdd();" class="w3-btn w3-green w3-ripple"> Sometimes </a>
+	<!--when no button is clicked, allergies count increases by one and proceeds to page ten-->	
+	<a href="#ten"  onclick="allergiesAdd();" class="w3-btn w3-red w3-ripple"> Sometimes (related to sinus pain) </a>
+	<!--when button is clicked, cold count increases by one and proceeds to page ten-->	   	
+	<a href="#ten"  onclick="coldAdd();" class="w3-btn w3-green w3-ripple"> Rarely </a>
+	<!--closed out this section-->
+	</div> 
+</div>
+
+<!--page ten containing the tenth question-->				
+<div class="page" id="ten">
+	<div class="w3-container w3-flat-carrot">
+	<!--Header of page ten-->
+	<h1>Question 10</h1>
+	</div>
+	
+	<!--content of page ten-->	
+	<div id="content" class="w3-container">
+	<!--question ten-->	   	
+	<p>Do you have body aches or pains?</p> 
+	<!--when button is clicked, cold and flu count increases by one and proceeds to page eleven-->	
+	<a href="#eleven"  onclick="coldAdd();fluAdd();" class="w3-btn w3-red w3-ripple"> Yes </a>
+	<!--when button is clicked, corona count increases by one and proceeds to page eleven-->	   	
+	<a href="#eleven"  onclick="coronaAdd();" class="w3-btn w3-green w3-ripple"> Sometimes </a>
+	<!--when button is clicked, allergies count increases by one and proceeds to page eleven-->	   	
+	<a href="#eleven"  onclick="allergiesAdd();" class="w3-btn w3-green w3-ripple"> No </a>
+	<!--closed out this section-->
+	</div> 
+</div>
+
+			
+<!--page eleven containing the eleventh question-->				
+<div class="page" id="eleventh">
+	<div class="w3-container w3-flat-carrot">
+	<!--Header of page eleventh-->
+	<h1>Question 11</h1>
+	</div>
+	
+	<!--content of page eleven-->	
+	<div id="content" class="w3-container">
+	<!--question eleven-->	   	
+	<p>Do you experience diarrhea? Last question!</p> 
+	<!--when button is clicked, corona count increases by one and proceeds to results-->	
+	<a href="#twelve"  onclick="coronaAdd();" class="w3-btn w3-red w3-ripple"> Sometimes </a>
+	<!--when button is clicked, flu count increases by one and proceeds to page eleven-->	   	
+	<a href="#twelve"  onclick="fluAdd();" class="w3-btn w3-green w3-ripple"> Sometimes for children </a>
+	<!--when button is clicked, allergies and cold count increases by one and proceeds to page eleven-->	   	
+	<a href="#twelve"  onclick="allergiesAdd();coldAdd();" class="w3-btn w3-green w3-ripple"> No </a>
+	<!--closed out this section-->
+	</div> 
+</div>
+<!--page twelve containing final results-->			
+<div class="page" id="twelve">
+	<div class="w3-container w3-flat-carrot">
+	<!--header for page twelve-->				
 	<h1>Results!</h1>
 	</div>
 	
