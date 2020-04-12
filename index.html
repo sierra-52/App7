@@ -126,30 +126,35 @@ Known Issues: None
 		var a = document.getElementById("myCanvas"); //calls the canvas
 		var atx = a.getContext("2d"); // prints in 2d
 		atx.fillText(coronaPercent+ " %",100,100); //detrmines where and what is written
+		atx.font = "20px Georgia";// sets size and font of word
 		}
 	
 	function flu(){ //this function draws percentage of having flu
 		var b = document.getElementById("myCanvas"); //calls the canvas
 		var btx = b.getContext("2d"); // prints in 2d
 		btx.fillText(fluPercent+ " %",100,100); //detrmines where and what is written
+		btx.font = "20px Georgia";// sets size and font of word
 		}
 		
 	function cold(){ //this function draws percentage of having cold
 		var c = document.getElementById("myCanvas"); //calls the canvas
 		var ctx = c.getContext("2d"); // prints in 2d
 		ctx.fillText(coldPercent+ " %",100,100); //detrmines where and what is written
+		ctx.font = "20px Georgia";// sets size and font of word
 		}
 		
 	function allergies(){ //this function draws percentage of having cold
 		var d = document.getElementById("myCanvas"); //calls the canvas
 		var dtx = d.getContext("2d"); // prints in 2d
 		dtx.fillText(allergiesPercent + " %",100,100); //detrmines where and what is written
+		dtx.font = "20px Georgia";// sets size and font of word
+
 		}
 
 	function clearCanvas(){ //this function clears the canvas
-		var d = document.getElementById("myCanvas"); //calls the canvas
-		var dtx = d.getContext("2d"); //prints in 2d
-		dtx.clearRect(0,0,350,300); //clears everything within the rectangle with specified coordinates
+		var e = document.getElementById("myCanvas"); //calls the canvas
+		var etx = d.getContext("2d"); //prints in 2d
+		etx.clearRect(0,0,350,300); //clears everything within the rectangle with specified coordinates
 }
 
 //end of script
