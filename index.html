@@ -59,7 +59,6 @@ Known Issues: None
 	//adds a count to corona variable when user clicks corresponding answer
        		function coronaAdd(){
            		corona_count = corona_count + 1;
-			console.log(corona_count);
 		}	
 	
 	//adds a count to cold variable when user clicks corresponding answer
@@ -125,30 +124,29 @@ Known Issues: None
 	function corona(){ //this function draws percentage of having corona
 		var a = document.getElementById("myCanvas"); //calls the canvas
 		var atx = a.getContext("2d"); // prints in 2d
+		atx.font = "20px Arial";// sets size and font of word
 		atx.fillText(coronaPercent+ " %",100,100); //detrmines where and what is written
-		atx.font = "20px Georgia";// sets size and font of word
 		}
 	
 	function flu(){ //this function draws percentage of having flu
 		var b = document.getElementById("myCanvas"); //calls the canvas
 		var btx = b.getContext("2d"); // prints in 2d
+		btx.font = "20px Arial";// sets size and font of word
 		btx.fillText(fluPercent+ " %",100,100); //detrmines where and what is written
-		btx.font = "20px Georgia";// sets size and font of word
 		}
 		
 	function cold(){ //this function draws percentage of having cold
 		var c = document.getElementById("myCanvas"); //calls the canvas
 		var ctx = c.getContext("2d"); // prints in 2d
+		ctx.font = "20px Arial";// sets size and font of word
 		ctx.fillText(coldPercent+ " %",100,100); //detrmines where and what is written
-		ctx.font = "20px Georgia";// sets size and font of word
 		}
 		
 	function allergies(){ //this function draws percentage of having cold
 		var d = document.getElementById("myCanvas"); //calls the canvas
 		var dtx = d.getContext("2d"); // prints in 2d
+		dtx.font = "20px Arial";// sets size and font of word
 		dtx.fillText(allergiesPercent + " %",100,100); //detrmines where and what is written
-		dtx.font = "20px Georgia";// sets size and font of word
-
 		}
 
 	function clearCanvas(){ //this function clears the canvas
