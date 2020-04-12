@@ -79,21 +79,28 @@ Known Issues: None
 	//calculates % chance symptoms are caused by corona
 		function coronaCalc(){
 			coronaPercent= (corona_count/11)*100;
+			coronaPercent = Math.round(coronaPercent);
+
 		}
 		
 	//calculates % chance symptoms are caused by cold
 		function coldCalc(){
 			coldPercent= (cold_count/11)*100;
+			coldPercent = Math.round(coldPercent);
+
 		}
 
 	//calculates % chance symptoms are caused by flu
 		function fluCalc(){
 			fluPercent= (flu_count/11)*100;
+			fluPercent = Math.round(fluPercent);
+
 		}
 	
 	//calculates % chance symptoms are caused by allergies
 		function allergiesCalc(){
 			allergiesPercent= (allergies_count/11)*100;
+			allergiesPercent = Math.round(allergiesPercent);
 		}
 
 	//made function for results
@@ -132,21 +139,21 @@ Known Issues: None
 		var b = document.getElementById("myCanvas"); //calls the canvas
 		var btx = b.getContext("2d"); // prints in 2d
 		btx.font = "20px Arial";// sets size and font of word
-		btx.fillText(fluPercent+ " %",100,100); //detrmines where and what is written
+		btx.fillText(fluPercent+ " %",100,150); //detrmines where and what is written
 		}
 		
 	function cold(){ //this function draws percentage of having cold
 		var c = document.getElementById("myCanvas"); //calls the canvas
 		var ctx = c.getContext("2d"); // prints in 2d
 		ctx.font = "20px Arial";// sets size and font of word
-		ctx.fillText(coldPercent+ " %",100,100); //detrmines where and what is written
+		ctx.fillText(coldPercent+ " %",100,200); //detrmines where and what is written
 		}
 		
 	function allergies(){ //this function draws percentage of having cold
 		var d = document.getElementById("myCanvas"); //calls the canvas
 		var dtx = d.getContext("2d"); // prints in 2d
 		dtx.font = "20px Arial";// sets size and font of word
-		dtx.fillText(allergiesPercent + " %",100,100); //detrmines where and what is written
+		dtx.fillText(allergiesPercent + " %",100,250); //detrmines where and what is written
 		}
 
 	function clearCanvas(){ //this function clears the canvas
